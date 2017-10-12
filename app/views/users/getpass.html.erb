@@ -1,0 +1,31 @@
+
+<div class="">
+	<h3 class="panel-title">Forgot Your Password ?</h3>
+
+</div>
+<br>
+<div class="">
+  
+<%= @info %>
+<% if @showform == true %>
+<p> Hello :<%= @user.name %></p>
+<p>  Your link reset password will send to email : <%= @user.email %> </p>
+<% end %> 
+
+<%= form_tag({:controller => "users", :action => "getpass" }, :method => "get", enforce_utf8: false , class: "form-wrap clearfix") do %>  
+<div class="form-group">
+  <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Your Email">
+</div>
+<div class="form-group">
+  <button type="submit" class="btn btn-primary">Reset Your Password</button>
+</div>
+<% end %>        
+
+ 
+  <a href="/getpass">Forget password ?</a><br> 
+<a href="<%= login_path %>">Back login page.</a>
+
+
+</div>
+
+ 

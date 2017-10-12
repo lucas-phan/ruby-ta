@@ -1,0 +1,56 @@
+<div class="admin main content">
+  <p id="notice"><%= notice %></p>
+  <p> 
+    <div class="create new"><%= link_to 'Create Categories', new_admin_catalogue_path, class: "btn btn-sm btn-warning" %></div> 
+  </p> 
+  <div class="box">
+    <div class="table-responsive">  
+      <table class="table no-margin table-hover">
+        <thead>
+          <tr>
+            
+           <th>Level</th>
+           <th>Name</th>
+           <th>level</th>          
+            <th>Order</th>       
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @admin_catalogues.each do |admin_category| %>
+          <tr>    
+            
+            <td><%= link_to admin_category.fullname , edit_admin_catalogue_path(admin_category) %></td>
+             <td><%=  admin_category.name  %></td>
+            <td><%=  admin_category.level  %></td>
+             
+            <td><%= admin_category.order %></td>  
+           <%   
+              $rssult = ''
+              $i = admin_category.parent.to_i 
+              while $i > 0  do
+                   $full = gname($i).name.to_s
+                   $rssult = $full.parameterize + '/' + $rssult
+                   $i = gname($i).parent.to_i;
+              end           
+              $rslink = $rssult + admin_category.slug.to_s
+            %>
+            <td class="width60"> <a class="btn-xs btn btn-info" href="../catalogs/<%= $rslink.to_s %>.html" target="_blank">Preview</a> </td>
+
+            <td class="width60"><%= link_to 'Edit', edit_admin_catalogue_path(admin_category) , class: "btn-xs btn btn-warning" %></td>
+            <td class="width60"><%= link_to 'Delete', admin_category, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn-xs btn btn-danger" %></td>
+          </tr>
+          <% end %>
+ 
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+   
+  <br> 
+
+</div>
+
+ 
+ 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="vi"> <!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" type="image/x-icon" href="/images/icon/favicon.ico">
+
+
+    <title><%= @titlepage == nil ? controller.action_name.capitalize : @titlepage %></title>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="  ">
+    <meta name="keywords" content="<%= opt('keywords') %>">
+    <meta name="generator" content="<%= opt('generator') %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" id="packed-css" href="/css/_packed.css" type="text/css" media="all">
+    <link rel="stylesheet" id="rs-settings-css" href="/js/vendor/revslider/css/settings.css" type="text/css"
+          media="all">
+    <link rel="stylesheet" id="fontello-style-css" href="/css/fontello.css" type="text/css" media="all">
+    <link rel="stylesheet" id="main-style-css" href="/css/main_style.css" type="text/css" media="all">
+    <link rel="stylesheet" id="custom-style-css" href="/css/custom-style.css" type="text/css" media="all">
+    <style id="custom-style-inline-css" type="text/css"></style>
+    <link rel="stylesheet" id="responsive-style-css" href="/css/responsive.css" type="text/css" media="all">
+    <!--<link rel="stylesheet" id="customizer-style-css" href="custom_tools/css/front.customizer.css" type="text/css" media="all">-->
+</head>
+
+<% if current_page?('/') %>
+<body class="page body_style_fullscreen body_filled article_style_stretch top_panel_opacity_solid top_panel_show top_panel_above user_menu_show sidebar_hide fixed_top_menu">
+<% else %>
+<body class="page body_style_wide body_filled article_style_stretch top_panel_opacity_transparent top_panel_show top_panel_above top_panel_over user_menu_hide sidebar_hide fixed_top_menu top_image_show">
+<% end %>
+
+
+
+<div class="body_wrap">
+
+    <div class="page_wrap">
+
+        <div class="top_panel_fixed_wrap"></div>
+        <header class="top_panel_wrap">
+            <div class="menu_main_wrap logo_left menu_show">
+                <div class="container">
+                    <div class="logo">
+                        <a href="/">
+                            <% if current_page?('/') %>
+                            <img src="<%= opt('logo').html_safe %>" class="logo_main" alt="">
+                            <% else %>
+                            <img src="<%= opt('logo_white').html_safe %>" class="logo_main" alt="">
+                            <% end %>
+                            <span class="logo_info"></span>
+                        </a>
+                    </div>
+                    <div class="menu_main">
+                        <nav class="menu_main_nav_area">
+                            <%= opt('main_menu').html_safe %>
+                        </nav>
+                        <a href="#" class="menu_main_responsive_button icon-menu"></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <% if current_page?('/') %>
+        <% else %>
+        <section class="top_panel_image top_panel_bg2">
+            <div class="top_panel_image_hover"></div>
+            <div class="top_panel_image_header">
+                <% if current_page?('/contactus.html') %>
+                <h1 class="top_panel_image_title entry-title">Liên Hệ</h1>
+                <% else %>
+                <h1 class="top_panel_image_title entry-title"><%= @titlepage == nil ? controller.action_name.capitalize : @titlepage.html_safe %></h1>
+                <% end %>
+            </div>
+        </section>
+        <% end %>

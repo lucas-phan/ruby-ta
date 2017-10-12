@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>ACP</title>  
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %> 
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %> 
+  <link rel="stylesheet" href="/lte/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/lte/up/font-awesome/css/font-awesome.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/lte/dist/css/AdminLTE.css">
+</head>
+<body>
+  <%= yield %> 
+</body> 
+<script type="text/javascript">         
+ function callFromDialog(id,data){  
+   document.getElementById(id).value = data;
+ }
+ function choose(id){
+  var URL = '/admin/resources/popup/image?id='+ id + '&request=get';
+  window.open(URL,"mywindow","menubar=1,resizable=1,width=550,height=580")
+}  
+
+function goSelect(data){
+  var idFromCallPage = getUrlVars()["id"];
+  window.opener.callFromDialog(idFromCallPage,data); 
+  window.close();
+}
+function getUrlVars(){
+  var vars = [], hash;
+  var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+  for(var i = 0; i < hashes.length; i++)
+  {
+    hash = hashes[i].split('=');
+    vars.push(hash[0]);
+    vars[hash[0]] = hash[1];
+  }
+  return vars;
+}
+</script>
+</html>

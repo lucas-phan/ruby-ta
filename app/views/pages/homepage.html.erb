@@ -1,0 +1,191 @@
+<div class="slider_wrap slider_fullwide slider_engine_revo slider_alias_optional">
+
+    <div id="rev_slider_wrapper" class="rev_slider_wrapper fullwidthbanner-container">
+        <!-- START REVOLUTION SLIDER 4.6.92 fullwidth mode -->
+        <div id="rev_slider_3_1" class="rev_slider fullwidthabanner tp-simpleresponsive">
+            <ul class="tp-revslider-mainul">
+                <% ary = JSON.parse(option("slide_home").value.as_json) %>
+                <% ary.each do |item| %>
+                <li data-transition="fade" data-slotamount="7" data-masterspeed="400" data-saveperformance="off"
+                    class="tp-revslider-slidesli">
+                    <!-- MAIN IMAGE -->
+                    <div class="slotholder">
+                        <img class="tp-bgimg defaultimg" alt="" src="<%= item['image_1'] %>"
+                             data-src="<%= item['image_2'] %>">
+                    </div>
+                    <!-- LAYERS -->
+
+                    <!-- LAYER NR. 2 -->
+                    <div class="tp-caption trx-big-left sfb fadeout tp-resizeme start full-width" data-x="100"
+                         data-y="150"
+                         data-speed="500" data-start="1200" data-easing="Quad.easeOut" data-splitin="none"
+                         data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="400">
+                        <%= item['text'].html_safe %>
+                    </div>
+
+                    <!-- LAYER NR. 3 -->
+                    <div class="tp-caption trx-normal-white sfb fadeout tp-resizeme start text-intro full-width"
+                         data-x="100" data-y="270"
+                         data-speed="500" data-start="1600" data-easing="Quad.easeOut" data-splitin="none"
+                         data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="300">
+                        <%= item['content'].html_safe %>
+                    </div>
+
+                    <!-- LAYER NR. 4 -->
+                    <div class="tp-caption trx-no-style sfb fadeout start button-readmore" data-x="100" data-y="375"
+                         data-speed="500"
+                         data-start="2000" data-easing="Quad.easeOut" data-splitin="none" data-splitout="none"
+                         data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="400">
+                        <a href="<%= item['link'] %>" class="sc_button sc_button_square sc_button_bg_light">
+                            <span>read more</span>
+                        </a>
+                    </div>
+                    <!-- LAYER NR. 5 -->
+                    <!--<div class="tp-caption sfb stb start" data-x="right" data-hoffset="-120" data-y="bottom"-->
+                    <!--data-voffset="-120" data-speed="600" data-start="800" data-easing="Quad.easeOut"-->
+                    <!--data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="300"-->
+                    <!--data-endeasing="Quad.easeIn">-->
+                    <!--<img src="images/slider/480x538.png" alt="" data-ww="408.9807692307693" data-hh="459">-->
+                    <!--</div>-->
+                </li>
+                <% end %>
+            </ul>
+
+        </div>
+    </div>
+    <!-- END REVOLUTION SLIDER -->
+</div>
+
+
+<div class="page_content">
+
+    <section class="fullwidth_section light_section news_section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="sc_section">
+                        <div class="sc_content container">
+                            <h2 class="sc_title sc_title_regular sc_align_center">TÌM HIỂU THÊM VỀ TRACK</h2>
+
+                            <div class="layout_news template_news sc_blogger_horizontal">
+
+                                <% ary = JSON.parse(opt("about_track").as_json) %>
+                                <% ary.each do |item| %>
+                                <div class="col-sm-3 column_item_1">
+                                    <div class="post_item post_item_news sc_blogger_item">
+                                        <div class="post_featured">
+                                            <div class="post_thumb">
+                                                <img alt="Fleet Management Telematics"
+                                                     src="<%= item['image_1'] %>">
+
+                                                <div class="hover_wrap">
+                                                    <div class="link_wrap">
+                                                        <a class="hover_link icon-link" href="#"></a>
+                                                        <a class="hover_view icon-resize-full"
+                                                           href="<%= item['image_1'] %>"
+                                                           title="Fleet Management Telematics"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h4 class="post_title sc_title sc_blogger_title">
+                                            <%= item['text'] %>
+                                        </h4>
+
+                                        <div class="post_content sc_blogger_content">
+                                            <div class="post_descr">
+                                                <%= item['content'].html_safe %>
+                                                <% if item['text'] != 'NEWS' %>
+                                                <a href="<%= item['link'] %>"
+                                                   class="sc_button sc_button_square sc_button_bg_underline  sc_button_iconed ">
+
+                                                    Learn more
+
+                                                    <span class="sc_button_iconed icon-right"></span>
+
+                                                </a>
+                                                <% end %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% end %>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fullwidth_section no_padding_top_container dark_section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="sc_section">
+                        <div class="sc_section_overlay">
+                            <div class="sc_section_content">
+                                <div class="sc_content container">
+                                    <div class="sc_contact_form sc_contact_form_standard">
+                                        <div class="sc_contact_form_left">
+                                            <div class="sc_contact_info">
+                                                <h6 class="sc_contact_form_subtitle"><%= opt('company_name') %></h6>
+
+                                                <h2 class="sc_contact_form_title"><%= opt('contact_us') %></h2>
+
+                                                <div class="sc_contact_form_address_wrap">
+                                                    <div class="sc_contact_form_address_field">
+                                                                    <span class="sc_contact_form_address_data">
+                                                                        <%= opt('company_address').html_safe %>
+                                                                    </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="sc_contact_form_right">
+                                            <p class="sc_contact_form_description">Your email address will not be
+                                                published. Required fields are marked *</p>
+
+                                            <%= form_tag({:controller => "pages", :action => "contactus"} , class: "contact-form inited", id: "template-contactform" , name: 'template-contactform'  ) do %>
+
+                                                <div class="sc_contact_form_info">
+                                                    <div class="sc_contact_form_item sc_contact_form_field label_over">
+                                                        <label class="required" >Name</label>
+                                                        <input type="text" id="name_" required name="name_" placeholder="Name" />
+                                                    </div>
+                                                    <div class="sc_contact_form_item sc_contact_form_field label_over">
+                                                        <label class="required">E-mail</label>
+                                                        <input id="email_" name="email_" type="email" placeholder="Email" required>
+                                                    </div>
+                                                    <div class="sc_contact_form_item sc_contact_form_field label_over">
+                                                        <label class="required">Subject</label>
+                                                        <input id="subject_" name="subject_" type="text"  placeholder="Subject" required>
+                                                    </div>
+                                                </div>
+                                                <div class="sc_contact_form_item sc_contact_form_message label_over">
+                                                    <label class="required">Message</label>
+                                                    <textarea id="mess_" name="mess_" placeholder="Message" required></textarea>
+                                                </div>
+                                                <div class="sc_contact_form_item sc_contact_form_button">
+                                                    <button type="submit">
+                                                        Send message
+                                                        <span class="icon-mail-alt"></span>
+                                                    </button>
+                                                </div>
+                                                <div class="result sc_infobox"></div>
+                                            <% end %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+

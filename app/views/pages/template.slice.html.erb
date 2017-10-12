@@ -1,0 +1,6 @@
+<div id="notice"><%= notice %></div>
+
+<% ary = JSON.parse(option("slide_on_homepage").value.as_json) %> 
+<% ary.each do |item| %>                      
+<%= item['title'] %>
+<% end %>

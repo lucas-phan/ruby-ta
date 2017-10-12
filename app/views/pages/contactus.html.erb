@@ -1,0 +1,65 @@
+<div class="page_content">
+    <section class="fullwidth_section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="sc_content container">
+                        <div class="sc_contact_form sc_contact_form_standard standard_light">
+                            <div class="sc_contact_form_left">
+                                <div class="sc_contact_info">
+                                    <h2 class="sc_contact_form_title"><%= opt('contact_us') %></h2>
+
+                                    <div class="sc_contact_form_address_wrap">
+                                        <div class="sc_contact_form_address_field">
+                                                                    <span class="sc_contact_form_address_data">
+                                                                        <%= opt('company_address').html_safe %>
+                                                                    </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sc_contact_form_right">
+
+
+                                <h5><%= raw @thankyou %></h5>
+
+                                <%= form_tag({:controller => "pages", :action => "contactus"} , class: "contact-form inited", id: "template-contactform" , name: 'template-contactform'  ) do %>
+
+
+                                    <div class="sc_contact_form_info">
+                                        <div class="sc_contact_form_item sc_contact_form_field label_over">
+                                            <label class="required" >Name</label>
+
+                                            <input type="text" id="name_" required name="name_" placeholder="Name" />
+                                        </div>
+                                        <div class="sc_contact_form_item sc_contact_form_field label_over">
+                                            <label class="required" >E-mail</label>
+                                            <input id="email_" name="email_" type="email" placeholder="Email" required>
+                                        </div>
+                                        <div class="sc_contact_form_item sc_contact_form_field label_over">
+                                            <label class="required">Subject</label>
+                                            <input id="subject_" name="subject_" type="text"  placeholder="Subject" required>
+                                        </div>
+                                    </div>
+                                    <div class="sc_contact_form_item sc_contact_form_message label_over">
+                                        <label class="required" >Message</label>
+                                        <textarea id="mess_" name="mess_" placeholder="Message" required></textarea>
+                                    </div>
+                                <div class="sc_contact_form_item sc_contact_form_button">
+                                    <button type="submit" name="submit" id="submit">
+                                        Send message
+                                        <span class="icon-mail-alt"></span>
+                                    </button>
+                                </div>
+                                <% end %>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+

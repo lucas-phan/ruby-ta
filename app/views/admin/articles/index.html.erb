@@ -1,0 +1,57 @@
+  <div class="admin main content">
+    <p id="notice"><%= notice %></p> 
+    <p> 
+      <div class="create new"> <%= link_to 'Create Articles', new_admin_article_path , class: "btn btn-sm btn-warning" %></div> 
+      
+    </p> 
+    <div class="fitter dropbox row show-grid">
+
+      <div class="col-md-4">
+        <select class="form-control catalog drop_group">
+
+          <option value="choose">choose..</option>
+          <% @admin_articlenodes_list.each do |articlenodes| %>
+          <option value="<%= articlenodes.id %>"><%= articlenodes.fullname %></option>       
+          <% end %>            
+        </select>
+      </div>
+    </div>
+    <br>
+    <div class="box">
+      <div class="table-responsive">  
+        <table class="table no-margin table-hover">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Image</th>
+              <th>Content</th>
+              <th>Status</th>
+              <th>Node</th>
+              <th>Order</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @admin_articles.each do |admin_article| %>
+            <tr>
+
+              <td><%= link_to admin_article.title, admin_article %></td>
+              <td><%= admin_article.image %></td>
+              <td><%= admin_article.content %></td>
+
+              <td><%= admin_article.status == 1 ? "Active" : "Not Active" %></td>
+              <td><%= admin_article.node %></td>
+              <td><%= admin_article.order %></td>
+              
+              <td class="width60"><%= link_to 'Edit', edit_admin_article_path(admin_article) , class: "btn-xs btn btn-warning" %></td>
+              <td class="width60"><%= link_to 'Destroy', admin_article, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn-xs btn btn-danger" %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+  

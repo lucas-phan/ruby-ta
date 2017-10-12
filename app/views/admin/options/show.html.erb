@@ -1,0 +1,28 @@
+<div class="admin main content   detail option">
+    
+    <p id="notice"><%= notice %></p>
+    
+    <p>
+    </p>
+    <p>
+      <strong>Key:</strong>
+      <%= @admin_option.key %>
+    </p>
+
+    <p>
+      <strong>Value:</strong>
+       <%= @admin_option.key.include?("password")  ? "************" : @admin_option.value.html_safe  %> 
+    </p>
+ 
+    <p>
+      <strong>Group:</strong>
+      <%= @admin_option.group %>
+    </p>
+
+
+    <%= link_to 'Edit', edit_admin_option_path(@admin_option) , class: "btn btn-primary btn-sm" %>  
+    <%= link_to 'Back', admin_options_path , class: "btn btn-primary btn-sm" %>
+
+  </div>
+
+ 

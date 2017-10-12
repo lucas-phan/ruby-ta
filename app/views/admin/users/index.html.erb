@@ -1,0 +1,55 @@
+<div class="admin main content">
+    <p id="notice"><%= notice %></p>
+
+    <p></p>
+    <div class="row show-grid">
+     <div class="col-md-3">
+      <select class="form-control user drop_group"> 
+        <option value="0">Choose</option>
+       
+        <option value="1">Client</option>
+         <option value="2">Admin</option>
+        <option value="">All</option> 
+      </select> 
+    </div>
+
+  </div>
+  <p> 
+    <div class="create new"> <%= link_to 'New User', new_admin_user_path , class: "btn btn-sm btn-warning" %></div> 
+  </p>
+ <div class="box">
+  <div class="box-body table-responsive no-padding">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Contact</th>
+          <th>Address</th>
+          <th>Status</th>
+          <th>Role</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @admin_users.each do |admin_user| %>
+        <tr>
+          <td>   <%= link_to admin_user.name, admin_user   %>   </td>
+          <td><%= admin_user.email %></td>
+          <td><%= admin_user.contact %></td>
+          <td><%= admin_user.address %></td>
+          <td><%= admin_user.status == 1 ?  "Active"  :  "Not Active" %></td> 
+
+          <td><%= admin_user.role == 2 ? "Admin" :  "Client" %></td> 
+       
+          <td class="width60"><%= link_to 'Edit', edit_admin_user_path(admin_user) , class: "btn-xs btn btn-warning" %></td>
+          <td class="width60"><%= link_to 'Delete', admin_user, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn-xs btn btn-danger" %></td>
+        </tr> 
+        <% end %>
+      </tbody> 
+    </table>
+  </div>
+  </div>
+</div>
+ 

@@ -1,0 +1,14 @@
+<div class="main content">
+	<div id="notice"><%= notice %></div>
+ 	<div>		
+		<% if @page.show_type == "template" %>
+			<%= render :template => "pages/"+@page.template.to_s %> 
+		<% else %>
+			<%= @page.content.html_safe %>	
+			<% if @page.template != "" %>
+				<%= render :template => "pages/"+@page.template.to_s %> 
+			<% end %>	 
+		<% end %>
+	</div>
+	
+</div>

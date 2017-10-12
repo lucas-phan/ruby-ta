@@ -1,0 +1,33 @@
+<div class="admin main content  ">
+    <p id="notice"><%= notice %></p>
+
+    <p>
+      <strong>Title:</strong>
+      <%= @admin_page.title %>
+    </p>
+
+    <p>
+      <strong>Content:</strong>
+      <%= raw @admin_page.content %>
+    </p>
+
+    <p>
+      <strong>Status:</strong>
+      <%= @admin_page.status %>
+    </p>
+
+    <p>
+      <strong>Parent:</strong>
+      <%= @admin_page.parent %>
+    </p>
+
+    <p>
+      <strong>Order:</strong>
+      <%= @admin_page.order %>
+    </p>
+
+    <%= link_to 'Edit', edit_admin_page_path(@admin_page) , class: "btn btn-primary btn-sm" %>  
+    <%= link_to 'Back', admin_pages_path , class: "btn btn-primary btn-sm" %>
+  </div>
+
+  

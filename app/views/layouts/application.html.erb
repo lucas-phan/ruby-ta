@@ -1,0 +1,12 @@
+<%= render "layouts/header" %>
+<% if current_page?('/') %>
+<div class="main <%= controller.controller_name %> <%= controller.action_name %>">
+    <%= yield %>
+</div>
+<% else %>
+<div class="main profile_page <%= controller.controller_name %> <%= controller.action_name %>">
+    <%= yield %>
+</div>
+<% end %>
+
+<%= render "layouts/footer" %>

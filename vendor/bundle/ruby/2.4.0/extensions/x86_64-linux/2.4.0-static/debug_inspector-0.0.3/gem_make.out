@@ -1,0 +1,15 @@
+current directory: /home/lucas/project/ruby/track-asia.vn/vendor/bundle/ruby/2.4.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+/home/lucas/.rbenv/versions/2.4.1/bin/ruby -r ./siteconf20171012-25429-pawace.rb extconf.rb
+creating Makefile
+
+current directory: /home/lucas/project/ruby/track-asia.vn/vendor/bundle/ruby/2.4.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" clean
+
+current directory: /home/lucas/project/ruby/track-asia.vn/vendor/bundle/ruby/2.4.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR="
+compiling debug_inspector.c
+linking shared-object debug_inspector.so
+
+current directory: /home/lucas/project/ruby/track-asia.vn/vendor/bundle/ruby/2.4.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 debug_inspector.so ./.gem.20171012-25429-c8mnbl

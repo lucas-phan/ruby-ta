@@ -1,0 +1,82 @@
+<section class="parallax_section">
+    <div class="sc_parallax bg_tint_dark" data-parallax-speed="0.6" data-parallax-x-pos="50%" data-parallax-y-pos="50%">
+        <div class="sc_parallax_content parallax_bg1">
+            <div class="sc_parallax_overlay">
+                <div class="sc_section aligncenter">
+
+                    <% ary = JSON.parse(@page.custom_field.as_json) %>
+                    <% ary.each do |item| %>
+                        <h2 class="sc_title sc_title_underline sc_align_center">
+                            <%= item['propertie'].html_safe %>
+                        </h2>
+                        <%= @page.content.html_safe %>
+                    <% end %>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="page_content">
+    <% ary = JSON.parse(option("solution_sub_page").value.as_json) %>
+    <% ary.each do |item| %>
+    <section class="fullwidth_section light_section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="sc_section">
+                        <div class="sc_content container">
+                            <h2 class="sc_title sc_title_regular sc_align_center"><%= item['title'] %></h2>
+                            <div class="sc_columns sc_columns_count_2">
+                                <div class="col-sm-6 sc_column_item">
+                                    <figure class="sc_image sc_image_shape_square" style="text-align: center;">
+                                        <img src="<%= item['thumb'] %>" alt="" >
+                                    </figure>
+                                </div>
+                                <div class="col-sm-6 sc_column_item">
+                                    <div class="sc_section" style="margin-top:50px">
+                                        <%= item['content'].html_safe %>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <% end %>
+</div>
+
+<section class="fullwidth_section news_section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="sc_title sc_align_center">With all the information computed by TRACK™, it will benefit you:</h4>
+                    <div class="sc_section">
+                        <div class="sc_content container">
+                            <div class="sc_blogger layout_news template_news sc_blogger_horizontal">
+                                <div class="columns_wrap">
+                                    <% ary = JSON.parse(option("solution_benefit").value.as_json) %>
+                                    <% ary.each do |item| %>
+                                    <div class="col-sm-4 column_item_1">
+                                        <div class="post_item post_item_news sc_blogger_item">
+                                            <div class="post_featured">
+                                                <div class="post_thumb">
+                                                    <img alt="<%= item['alt'] %>" src="<%= item['thumb'] %>">
+                                                </div>
+                                            </div>
+                                            <h5 class="post_title"><%= item['title'] %></h5>
+                                        </div>
+                                    </div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>

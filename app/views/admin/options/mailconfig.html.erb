@@ -1,0 +1,29 @@
+
+<div class="admin main content">
+  <p id="notice"><%= notice %></p> 
+  <div class="row">
+ <div class="col-md-12">
+   <div class="box">
+     <div class="table-responsive">
+      <table class="table no-margin table-hover">
+        <tbody>
+          <% @admin_options.each do |admin_option| %>
+          <tr class="">
+            <td><%= link_to admin_option.key , edit_admin_option_path(admin_option) %></td>
+            <td><div class="short value"><%= admin_option.key.include?("password")  ? "*****" : admin_option.value  %></div></td>
+
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div> 
+  </div>
+</div>
+ 
+</div>
+
+ <form>
+  <input type="text" name="mailtest" value="">  <input type="submit" value="Test mail">
+</form>
+ 
+ </div>

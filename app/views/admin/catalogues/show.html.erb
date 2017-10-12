@@ -1,0 +1,37 @@
+  <div class="admin main content">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @admin_catalogue.level %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @admin_catalogue.name %>
+</p>
+
+<p>
+  <strong>Parent:</strong>
+  <%= @admin_catalogue.parent %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @admin_catalogue.order %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @admin_catalogue.slug %>
+</p>
+
+  
+<%= link_to 'Edit', edit_admin_catalogue_path(@admin_catalogue) , class: "btn btn-primary   btn-sm" %> 
+<%= link_to 'Back', admin_catalogues_path , class: "btn btn-primary btn-sm" %>
+
+</div>
+
+
+ 
+

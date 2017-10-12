@@ -1,0 +1,70 @@
+<div class="page_content">
+    <section class="fullwidth_section light_section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="sc_section">
+                        <div class="sc_content container">
+                            <% ary = JSON.parse(@page.custom_field.as_json) %>
+                            <% ary.each do |item| %>
+                            <h2 class="sc_title sc_title_regular sc_align_center"><%= item['propertie'].html_safe %></h2>
+                            <div class="sc_columns sc_columns_count_2">
+                                <div class="col-sm-6 sc_column_item">
+                                    <figure class="sc_image sc_image_shape_square">
+                                        <img src="<%= item['value'] %>" alt="">
+                                    </figure>
+                                </div>
+                                <div class="col-sm-6 sc_column_item">
+                                    <div class="sc_section">
+                                        <%= @page.content.html_safe %>
+                                    </div>
+                                </div>
+                            </div>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="fullwidth_section light_section gallery_section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="sc_section sc_align_center">
+                        <h2 class="sc_title sc_title_regular sc_align_center">Screenshots</h2>
+                        <div id="profile_gallery" class="layout_grid_4big">
+                            <div class="isotope_filters"></div>
+                            <div class="isotope_wrap" data-columns="3">
+                                <% ary = JSON.parse(option("lite_pro_gallery").value.as_json) %>
+                                <% ary.each do |item| %>
+                                    <div class="isotope_item isotope_item_grid isotope_item_grid_4big isotope_column_3 flt_23 flt_28">
+                                        <div class="post_item post_item_grid post_item_grid_4big">
+                                            <div class="post_featured img">
+                                                <img alt="Login Page" src="<%= item['small'] %>">
+                                                <div class="hover_wrap">
+                                                    <div class="hover_content">
+                                                        <a class="hover icon-resize-ful" href="<%= item['big'] %>" title="Login Page"></a>
+                                                        <div class="post_info">
+                                                            <h4 class="post_title">
+                                                                <%= item['link1'].html_safe %>
+                                                            </h4>
+                                                                        <span class="info">
+                                                                            <%= item['link2'].html_safe %>
+                                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

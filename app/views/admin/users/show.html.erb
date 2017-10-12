@@ -1,0 +1,42 @@
+<div class="admin main content  ">
+		<p id="notice"><%= notice %></p>
+
+		<p>
+			<strong>Name:</strong>
+			<%= @admin_user.name %>
+		</p>
+
+		<p>
+			<strong>Email:</strong>
+			<%= @admin_user.email %>
+		</p>
+
+		<p>
+			<strong>Contact:</strong>
+			<%= @admin_user.contact %>
+		</p>
+
+		<p>
+			<strong>Address:</strong>
+			<%= @admin_user.address %>
+		</p>
+
+		<p>
+			<strong>Company:</strong>
+			<%= @admin_user.company %>
+		</p>
+
+		<p>
+			<strong>Status:</strong>
+			<%= @admin_user.status == 1 ?  "Active"  :  "Not Active" %>
+		</p>
+ 
+		<p>
+			<strong>Role:</strong>
+			<%= @admin_user.role == 2 ?  "Admin" :  @admin_user.role == 1 ?  "Client"   :  "Guest" %>
+		</p>
+
+		<%= link_to 'Edit', edit_admin_user_path(@admin_user) , class: "btn btn-primary btn-sm" %>  
+		<%= link_to 'Back', admin_users_path , class: "btn btn-primary btn-sm" %>
+	</div>
+ 

@@ -1,0 +1,76 @@
+<div class="admin main content">
+
+	<%= form_for(@admin_option) do |f| %>
+	<% if @admin_option.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@admin_option.errors.count, "error") %> prohibited this admin_option from being saved:</h2>
+
+		<ul>
+			<% @admin_option.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<div class="field">
+		<%= f.hidden_field :value , style: "width:100%"  %>
+	</div>
+	<% 	ary = JSON.parse(@admin_option.value.as_json) %> 
+
+	<div class="jsoncount" style="display: none;"><%= ary.count %></div>
+	<p><a href="javascript:;" onclick="addMoreRows(this.form);" class="btn btn-primary btn-xs">Add More</a></p>
+	<div id="addedRows"></div>
+	<div class="actions ">
+		<br>
+		<%= f.submit  "Update slice",   class: "btn btn-success synjson" %>
+	</div>  
+	<% end %> 
+	
+	<script type="text/javascript">
+		var rowCount = $('.jsoncount').text(); 
+		function addMoreRows(frm) {
+			rowCount ++;
+			var recRow = `<p class="dong" id="rowCount`+rowCount+`">
+                    <input class="form-control oneline" placeholder="small" id="img`+rowCount+`" name="" type="text" /> <span onclick="choose(img`+(rowCount)+`.id)" class="btn btn-primary btn-xs">Choose</span><br/>
+                    <input class="form-control oneline" placeholder="big" id="img`+rowCount+`" name="" type="text" /> <span onclick="choose(img`+(rowCount)+`.id)" class="btn btn-primary btn-xs">Choose</span><br/>
+                    <input placeholder="link1" class="form-control" name="" type="text" />
+                    <input placeholder="link2"class="form-control" name="" type="text"/>
+                    <a href="javascript:void(0);" class="btn btn-danger btn-xs top" onclick="removeRow(`+rowCount+`);">Delete</a></p>`;
+			jQuery('#addedRows').append(recRow);
+		}
+		function removeRow(removeNum) {
+			jQuery('#rowCount'+removeNum).remove();
+		}
+	</script>
+	<script type="text/javascript">
+		var bb= $('.jsoncount').text();   
+		var jsonget = JSON.parse($('#admin_option_value').val());       
+		for (var i = 1; i <= bb ; i++) {  
+			var recRow = `<p class="dong" id="rowCount`+i+`">
+                    <input class="form-control oneline" id="img`+i+`"  value="`+jsonget[i-1]['small']+`" type="text" /> <span onclick="choose(img`+(i)+`.id)" class="btn btn-primary btn-xs top">Choose</span><br/>
+                    <input class="form-control oneline" id="img`+i+`"  value="`+jsonget[i-1]['big']+`" type="text" /> <span onclick="choose(img`+(i)+`.id)" class="btn btn-primary btn-xs top">Choose</span><br/>
+                    <input class="form-control" name="" value="`+jsonget[i-1]['link1']+`" type="text" />
+                    <input class="form-control" name="" value="`+jsonget[i-1]['link2']+`" type="text"/>
+                    <a href="javascript:void(0);" class="btn btn-danger btn-xs top" onclick="removeRow(`+i+`);">Delete</a></p>`;
+			jQuery('#addedRows').append(recRow);
+		}   
+		
+	</script>      
+	<script type="text/javascript">		 
+		$('.synjson').click(function(e){  
+			var x = 0; 
+			jsonObj = []; 	
+			$('.dong').each(function(){
+				item = {}
+				x++; 
+				item ["small"] =  $(this).children(":eq(0)").val();
+                item ["big"] =  $(this).children(":eq(3)").val();
+				item ["link1"] =  $(this).children(":eq(6)").val();
+				item ["link2"] =  $(this).children(":eq(7)").val();
+				jsonObj.push(item); 
+			}); 
+			var jsonString = JSON.stringify(jsonObj);
+			$('#admin_option_value').val(jsonString);   
+		});
+	</script> 
+</div>  

@@ -1,0 +1,57 @@
+<div class="admin main content">
+  <p id="notice"><%= notice %></p>   
+  <p> 
+    <div class="create new"> <%= link_to 'New Page', new_admin_page_path , class: "btn btn-sm btn-warning" %></div>  
+  </p>
+  <div class=" box">
+    <div class="box-body table-responsive no-padding">  
+      <table class="table table-hover">
+        <thead>
+          <tr>
+          
+            <th class="">Level</th>
+            <th class="">Title</th>
+            <th class="">Show type</th>
+            <th class="">Template</th>
+            <th class="">Order</th>
+            <th class="">Status</th>        
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @admin_pages.each do |admin_page| %>  
+
+          <tr class="<%= admin_page.status == 1 ? " " : "warming" %>">
+            
+            <td><div class="min value">       
+              <%= link_to admin_page.full_title, edit_admin_page_path(admin_page)  %> 
+            </div>
+          </td>   
+          <td><%= admin_page.title %></td>
+           <td><%= admin_page.show_type %></td>
+           <td><%= admin_page.template %></td>
+           <td><%= admin_page.order %></td> 
+          <td><%= admin_page.status == 1 ? "Active" : "Not Active" %></td>    
+            <%   
+              $rssult = ''
+              $i = admin_page.parent.to_i 
+              while $i > 0  do
+                   $full = gname($i).title.to_s.to_slug.normalize! :transliterations => [:vietnamese]
+                   $rssult = $full + '/' + $rssult
+                   $i = gname($i).parent.to_i;
+              end            
+              $rslink = $rssult + admin_page.slug.to_s
+            %>
+          <td class="width60"> <a class="btn-xs btn btn-info" href="../page/<%= $rslink.to_s %>.html" target="_blank">Preview</a> </td>
+          <td class="width60"><%= link_to 'Edit', edit_admin_page_path(admin_page) , class: "btn-xs btn btn-warning" %></td>
+          <td class="width60"><%= link_to 'Delete', admin_page, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn-xs btn btn-danger" %></td>
+        </tr> 
+ <% end %>
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+

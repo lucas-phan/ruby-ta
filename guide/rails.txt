@@ -1,0 +1,56 @@
+rails generate scaffold option key:string value:string group:string  
+rails generate scaffold admin::option key:string value:string group:string 
+
+rails generate scaffold user name:string password:digest email:string status:integer role:integer  
+rails generate scaffold admin::user name:string password:digest email:string status:integer role:integer
+
+rails generate scaffold page title:string content:string status:integer sub:string order:integer  
+rails generate scaffold admin::page title:string content:string status:integer sub:string order:integer
+
+rails generate scaffold post title:string content:string status:integer catalog:string order:integer  
+rails generate scaffold admin::post title:string content:string status:integer catalog:string order:integer
+
+rails generate scaffold product sku:string title:string image:string quantity:integer price:integer description:string status:integer node:string order:integer  
+rails generate scaffold admin::product sku:string title:string image:string quantity:integer price:integer description:string status:integer node:string order:integer  
+
+rails generate scaffold invoice productid:integer userid:integer title:string quantity:integer price:integer finalprice:integer description:string status:integer 
+rails generate scaffold admin::invoice productid:integer userid:integer title:string quantity:integer price:integer finalprice:integer description:string status:integer 
+
+rails generate scaffold article title:string image:string content:string status:integer node:string order:integer  
+rails generate scaffold admin::article title:string image:string content:string status:integer node:string order:integer
+
+rails generate scaffold resource key:string value:string group:string  
+rails generate scaffold admin::resource key:string value:string group:string 
+
+rails generate scaffold catalog name:string parent:string order:integer 
+rails generate scaffold admin::catalog name:string parent:string order:integer
+
+rails generate scaffold contact name:string email:string content:string file:string order:string status:integer 
+rails generate scaffold admin::contact name:string email:string content:string file:string order:string status:integer 
+
+rails generate scaffold portfolio image:string title:string description:string intro:string content:string
+rails generate scaffold admin::portfolio image:string title:string description:string intro:string content:string
+
+rails destroy scaffold portfolio image:string title:string description:string intro:string content:string
+rails destroy scaffold admin::portfolio image:string title:string description:string intro:string content:string
+
+has_secure_password 
+validates :name,
+presence: true
+validates :email,
+presence: true,
+uniqueness: true,
+format: {
+with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+}
+ 
+validates :key,
+presence: true,
+uniqueness: true 
+validates :value,
+presence: true
+def to_s
+
+end
+ 
+rake db:migrate

@@ -1,0 +1,10 @@
+<%= render "layouts/admin/header" %>
+<div class="content-wrapper <%= controller.controller_name %> <%= controller.action_name %>"> 
+	<section class="content-header">
+		<h1><a href="/<%= controller_path %>"><%= @titlepage == nil ? controller.controller_name.capitalize : @titlepage %></a>
+			> <%= controller.action_name.capitalize["_"] ? controller.action_name.capitalize.gsub('_'," ") : controller.action_name.capitalize %> 
+		</h1> 
+	</section>
+	<%= yield %>
+</div> 
+<%= render "layouts/admin/footer" %>

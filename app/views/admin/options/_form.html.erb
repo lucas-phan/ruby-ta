@@ -1,0 +1,63 @@
+<%= form_for(@admin_option) do |f| %>
+<% if @admin_option.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@admin_option.errors.count, "error") %> prohibited this admin_option from being saved:</h2>
+
+  <ul>
+    <% @admin_option.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= f.label :key %><br>
+  <%= f.text_field :key , class: "form-control oneline" %>
+</div>
+
+
+<% if !@admin_option.new_record?   %>
+<% if @admin_option.key.include?("password") %>
+
+<div class="field">
+  <%= f.label :value %><br>
+  <%= f.password_field :value  , class: "form-control" %>
+</div> 
+
+<% else %>
+<div class="field">
+  <%= f.label :value %><br>
+  <%= f.text_area :value , :rows=>8 , class: "form-control" %>
+</div> 
+<% end %>
+<% else  %>
+<div class="field">
+  <%= f.label :value %><br>
+  <%= f.text_area :value , :rows=>8 , class: "form-control" %>
+</div>  
+<% end  %>
+
+<div class="field">
+  <%= f.label :group %> <br>
+  <div class="row">
+  <div class=" col-md-4"> 
+    <select class="form-control choose drop_group ">
+      <option value="">Choose or create new</option>
+          <% @admin_options_group.each do |admin_option| %>
+          <option value="<%= admin_option.group %>" <%= (admin_option.group == @choseparam) ? "selected" : "" %>><%= admin_option.group %></option>
+          <% end %> 
+    </select>
+  </div> 
+  <div class="col-md-3">
+    <%= f.text_field :group , class: "form-control " %>
+  </div>
+  </div>
+</div> 
+<br>
+<div class="actions ">
+  <%= f.submit  class: "btn btn-sm btn-success" %>
+</div>  
+
+
+<% end %>

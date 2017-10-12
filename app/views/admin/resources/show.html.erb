@@ -1,0 +1,23 @@
+<div class="admin main content">
+		
+		<p id="notice"><%= notice %></p>
+		
+		<p>
+			<strong>Value:</strong>
+			<a href="<%= @admin_resource.value.include?('://') ? @admin_resource.value : '/uploads/'+@admin_resource.value %>"><%= @admin_resource.value  %></a> 
+		</p>
+		
+		<% if @admin_resource.group.include?('image')   %>
+		<p>  <%= image_tag(@admin_resource.value.include?('://') ? @admin_resource.value : '/uploads/'+@admin_resource.value , class: "imgage thumbs")  %>  </p>     
+		<% end  %>  
+		
+		<p>
+			<strong>Group:</strong>
+			<%= @admin_resource.group %>
+		</p>
+
+		<%= link_to 'Edit', edit_admin_resource_path(@admin_resource) , class: "btn btn-primary btn-sm" %> 
+		<%= link_to 'Back', admin_resources_path , class: "btn btn-primary btn-sm" %>
+	</div>
+
+ 

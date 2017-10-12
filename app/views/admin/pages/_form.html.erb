@@ -1,0 +1,154 @@
+<%= form_for(@admin_page) do |f| %>
+<% if @admin_page.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(@admin_page.errors.count, "error") %> prohibited this admin_page from being saved:</h2>
+
+    <ul>
+        <% @admin_page.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
+<div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title , class: "form-control oneline" %>
+</div>
+
+<% if !@admin_page.new_record?  %>
+<%
+$rssult = ''
+$i = f.object.parent.to_i
+while $i > 0  do
+$full = gname($i).title.to_s
+$rssult = $full.parameterize + '/' + $rssult
+$i = gname($i).parent.to_i;
+end
+$rslink = $rssult + f.object.title.parameterize.to_s
+%>
+
+<div class="field">
+    <%= f.label :slug %><br>
+    <%#= f.text_field :slug , :value => f.object.title.parameterize.to_s , class: "form-control" %>
+    <%= f.text_field :slug , class: "form-control half inblock" %>
+    <a href="/page/<%= $rslink.to_s %>.html" class="inblock" target="_blank">[View link]</a>
+</div>
+
+<% else %>
+<div class="field">
+    <%= f.label :slug %> <br>
+    (Edit after save.)
+</div>
+<% end %>
+
+<div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content , style: "width: 100%; height: 200px; " %>
+</div>
+
+<div class="field">
+    <%= f.label :featureimage, "Feature Image" %><br>
+    <%= f.text_field :featureimage , placeholder: "link or upload" , class: "form-control oneline" %>
+    <span onclick='choose("admin_page_featureimage")' class="btn btn-primary btn-xs oneline">Choose</span>
+</div>
+
+<div class="field">
+    <%= f.label :template %><br>
+    <%= f.select :template , options_for_select(@template, f.object.template),{ :include_blank => "Default" }, { :class => 'form-control oneline' } %>
+</div>
+
+
+<div class="field">
+    <%= f.label :show_type %><br>
+    <%= f.select :show_type , [['Default', 'default'] , ['Template', 'template']] ,{} , {class: "form-control oneline"}
+    %>
+</div>
+
+<div class="field">
+    <%= f.label :description , 'Description(SEO)' %><br>
+    <%= f.text_field :description , placeholder: "Description page, info ..", class: "form-control oneline" %>
+</div>
+
+<div class="field">
+    <%= f.label :keywords , 'Keywords(SEO)' %><br>
+    <%= f.text_field :keywords , placeholder: "Keywords 1, keywords 2", class: "form-control oneline" %>
+</div>
+
+<div class="field"><br>
+    <%= f.hidden_field :custom_field , class: "form-control " %>
+    <%
+    if @admin_page.custom_field == nil
+    @admin_page.custom_field = '[]'
+    end
+    ary = JSON.parse(@admin_page.custom_field.as_json)
+    %>
+
+    <div class="jsoncount" style="display: none;"><%= ary.count %></div>
+    <p><a href="javascript:;" onclick="addMoreRows(this.form);" class="btn btn-primary btn-xs">Make custom field ++</a>
+    </p>
+    <div id="addedRows"></div>
+</div>
+
+
+<div class="field">
+    <%= f.label :status %><br>
+    <%= f.select :status, [['Active', 1], ['Not Active', 0]] ,{} , {class: "form-control _25"} %>
+</div>
+
+
+<div class="field">
+    <%= f.label :parent %><br>
+    <%= f.collection_select(:parent, @catalog_list.all, :id, :full_title , {:include_blank => 'None' }, {class:
+    "form-control oneline" }) %>
+</div>
+
+
+<div class="field">
+    <%= f.label :order %><br>
+    <%= f.number_field :order , min: 0, class: "form-control _25" %>
+</div>
+<br>
+<div class="actions">
+    <%= f.submit class: "btn btn-success synjson" %>
+</div>
+<% end %>
+
+
+<script type="text/javascript">
+    var rowCount = $('.jsoncount').text();
+    function addMoreRows(frm) {
+        rowCount++;
+        var recRow = '<p class="dong" id="rowCount' + rowCount + '"><tr><td><input class="form-control onelines" placeholder="Properties" id="img' + rowCount + '" name="" type="text" /></td><td><input class="form-control oneline" style=" " placeholder="Value" name="" type="text" /></td></tr> <a href="javascript:void(0);" class="btn btn-danger btn-xs top" onclick="removeRow(' + rowCount + ');">Delete</a></p>';
+        jQuery('#addedRows').append(recRow);
+    }
+    function removeRow(removeNum) {
+        jQuery('#rowCount' + removeNum).remove();
+    }
+</script>
+
+<script type="text/javascript">
+    var bb = $('.jsoncount').text();
+    var jsonget = JSON.parse($('#admin_page_custom_field').val());
+    for (var i = 1; i <= bb; i++) {
+        var recRow = '<p class="dong" id="rowCount' + i + '"><tr><td><input class="form-control onelines" id="img' + i + '"  value="' + jsonget[i - 1]['propertie'] + '" type="text" /></td><td><input class="form-control oneline" name="" type="text" value="' + jsonget[i - 1]['value'] + '" /></td> </tr> <a href="javascript:void(0);" class="btn btn-danger btn-xs top" onclick="removeRow(' + i + ');">Delete</a></p>';
+        jQuery('#addedRows').append(recRow);
+    }
+</script>
+
+<script type="text/javascript">
+    $('.synjson').click(function (e) {
+        var x = 0;
+        jsonObj = [];
+        $('.dong').each(function () {
+            item = {}
+            x++;
+            item ["propertie"] = $(this).children(":eq(0)").val();
+            item ["value"] = $(this).children(":eq(1)").val();
+            jsonObj.push(item);
+        });
+        var jsonString = JSON.stringify(jsonObj);
+        $('#admin_page_custom_field').val(jsonString);
+    });
+
+</script>   

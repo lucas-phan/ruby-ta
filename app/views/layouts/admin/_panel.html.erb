@@ -1,0 +1,120 @@
+<li class="treeview">
+  <a href="javascript:;">
+    <i class="fa fa-cog glyphicon-cog"> </i>  <span>Options</span>
+    <span class="pull-right-container">
+      <i class="fa fa-angle-left pull-right"></i>
+    </span> 
+  </a>
+  <ul class="treeview-menu">
+    <li>
+      <a href="<%= admin_options_path %>"><i class="fa fa-circle-o"></i> List option</a>
+    </li>
+    <li>
+      <a href="<%= new_admin_option_path %>"><i class="fa fa-circle-o"></i> Create option</a>
+    </li> 
+    <li>
+     <a href="/admin/options/config/mailserver"><i class="fa fa-circle-o"></i> Mail server</a>
+   </li>  
+   <% plugin.each do |c| %>
+   <li>
+    <a href="/admin/options/plugin/<%= c.to_s.split('.html')[0] %>"> <i class="fa fa-circle-o"></i> <%= c.to_s.split('.html')[0].capitalize["_"] ? c.to_s.split('.html')[0].capitalize.gsub('_'," ") : c.to_s.split('.html')[0].capitalize %></a>
+  </li>
+  <% end %>     
+</ul>
+</li>    
+<li class="treeview">
+  <a href="javascript:;">
+    <i class="fa fa-users"> </i>  <span>Users</span>
+    <span class="pull-right-container">
+      <i class="fa fa-angle-left pull-right"></i>
+    </span> 
+  </a>
+  <ul class="treeview-menu">
+   <li>
+    <a href="<%= admin_users_path %>"><i class="fa fa-circle-o"></i> List user</a>
+  </li>
+  <li>
+    <a href="<%= new_admin_user_path %>"><i class="fa fa-circle-o"></i> Create user</a>
+  </li> 
+</ul>
+</li>   
+
+<li class="treeview">
+  <a href="javascript:;">
+    <i class="fa fa-file"> </i>  <span>Resource</span>
+    <span class="pull-right-container">
+      <i class="fa fa-angle-left pull-right"></i>
+    </span> 
+  </a>
+  <ul class="treeview-menu">
+    <li>
+      <a href="<%= admin_resources_path %>"><i class="fa fa-circle-o"></i> List resource</a>
+    </li>
+    <li>
+      <a href="<%= new_admin_resource_path %>"><i class="fa fa-circle-o"></i> Create resource</a>
+    </li> 
+  </ul>
+</li>   
+
+<li class="treeview">
+  <a href="javascript:;">
+    <i class="fa fa-newspaper-o"> </i>  <span>Pages</span>
+    <span class="pull-right-container">
+      <i class="fa fa-angle-left pull-right"></i>
+    </span> 
+  </a>
+  <ul class="treeview-menu">
+    <li>
+      <a href="<%= admin_pages_path %>"><i class="fa fa-circle-o"></i> List page</a>
+    </li>
+    <li>
+      <a href="<%= new_admin_page_path %>"><i class="fa fa-circle-o"></i> Create page</a>
+    </li>
+
+  </ul>
+</li>   
+
+
+
+<li class="treeview">
+  <a href="javascript:;">
+    <i class="fa fa-edit"> </i>  <span>Article</span>
+    <span class="pull-right-container">
+      <i class="fa fa-angle-left pull-right"></i>
+    </span> 
+  </a>
+  <ul class="treeview-menu">
+   <li>
+    <a href="<%= admin_articles_path %>"><i class="fa fa-circle-o"></i> List article</a>
+  </li>
+  <li> 
+    <a href="<%= new_admin_article_path %>"><i class="fa fa-circle-o"></i> Create article</a>
+  </li>           
+</ul>
+</li> 
+
+<li class="treeview">
+  <a href="javascript:;">
+    <i class="fa fa-edit"> </i>  <span>Catalogs</span>
+    <span class="pull-right-container">
+      <i class="fa fa-angle-left pull-right"></i>
+    </span> 
+  </a>
+  <ul class="treeview-menu">
+    <li>
+      <a href="<%= admin_catalogues_path %>"><i class="fa fa-circle-o"></i> List catalog </a>
+    </li>
+    <li>
+      <a href="<%= new_admin_catalogue_path %>"><i class="fa fa-circle-o"></i> Create catalog</a>
+    </li>         
+  </ul>
+</li> 
+
+
+<li>
+
+  <a href="<%= admin_helps_path %>" >
+    <i class="fa fa-circle-o"></i>
+    <span>Help </span>
+  </a>
+</li> 
